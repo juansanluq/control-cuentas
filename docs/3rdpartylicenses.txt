@@ -271,6 +271,12 @@ Apache-2.0
 @firebase/webchannel-wrapper
 Apache-2.0
 
+@ngrx/store
+MIT
+
+@ngrx/store-devtools
+MIT
+
 bootstrap
 MIT
 The MIT License (MIT)
