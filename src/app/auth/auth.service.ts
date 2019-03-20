@@ -11,8 +11,9 @@ import { User } from './user.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import { ActivarLoadingAction, DesactivarLoadingAction } from '../shared/ui.actions';
-import { SetUserAction } from './auth.actions';
+import { SetUserAction, UnsetUserAction } from './auth.actions';
 import { Subscription } from 'rxjs';
+import { UnsetItemsAction } from '../ingreso-egreso/ingreso-egreso.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -96,6 +97,7 @@ export class AuthService {
 
   logout() {
     this.afAuth.auth.signOut();
+    this.store.dispatch(new UnsetUserAction());
     this.router.navigate(['/login']);
     // console.log('El usuario ha cerrado sesión');
   }
@@ -103,7 +105,7 @@ export class AuthService {
   isAuth() {
     return this.afAuth.authState
       .pipe(
-        map( fbUser => {  
+        map( fbUser => {
           if ( fbUser == null) {
             this.router.navigate(['/login']);
           }

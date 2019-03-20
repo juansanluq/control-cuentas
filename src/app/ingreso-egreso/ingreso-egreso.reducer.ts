@@ -13,6 +13,7 @@ const initState: IngresoEgresoState = {
 export function ingresoEgresoReducer( state = initState, action: fromIngresoEgreso.acciones ): IngresoEgresoState {
 
     switch ( action.type ) {
+        // Devolvemos el array de items de los ingresos-egresos
         case fromIngresoEgreso.SET_ITEMS:
             return {
                 items: [
@@ -23,6 +24,7 @@ export function ingresoEgresoReducer( state = initState, action: fromIngresoEgre
                     })
                 ]
             };
+        // Devolvemos un array vacío de items, quitando todos los que halla en el state
         case fromIngresoEgreso.UNSET_ITEMS:
             return {
                 items: []
